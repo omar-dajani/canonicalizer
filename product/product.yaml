@@ -1,0 +1,11 @@
+_ > nanoagent.plugin.v0001.ProductConfig:
+tagline: "Strip a Python snippet down to its structure"
+summary: "Give it a Python snippet and it renames every variable and function to a canonical name, var_0, var_1, func_0 and so on, without changing the syntax tree. Two snippets that differ only in naming come out identical."
+highlights:
+  - "Names are numbered by first appearance, so the same code always gets the same names"
+  - "Classes, imports, attributes and dunder names are left alone"
+  - "Checks that the syntax tree is the same before and after"
+steps:
+  - "Paste a Python snippet"
+  - "It renames each variable and function and shows the renamed code"
+  - "The table of original and canonical names comes with it"

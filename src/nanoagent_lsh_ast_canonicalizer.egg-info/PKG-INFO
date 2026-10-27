@@ -1,0 +1,12 @@
+Metadata-Version: 2.4
+Name: nanoagent-lsh-ast-canonicalizer
+Version: 0.1.0
+Summary: Rename a Python snippet's variables and functions to canonical identifiers: a NanoAgent plugin
+Requires-Python: >=3.12
+License-File: LICENSE
+Requires-Dist: mcp<2,>=1.27
+Requires-Dist: slimconfig
+Provides-Extra: dev
+Requires-Dist: pytest; extra == "dev"
+Requires-Dist: ruff; extra == "dev"
+Dynamic: license-file

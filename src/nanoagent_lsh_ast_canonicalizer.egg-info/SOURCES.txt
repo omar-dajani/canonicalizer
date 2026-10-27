@@ -1,0 +1,14 @@
+LICENSE
+README.md
+pyproject.toml
+src/nanoagent_lsh_ast_canonicalizer.egg-info/PKG-INFO
+src/nanoagent_lsh_ast_canonicalizer.egg-info/SOURCES.txt
+src/nanoagent_lsh_ast_canonicalizer.egg-info/dependency_links.txt
+src/nanoagent_lsh_ast_canonicalizer.egg-info/requires.txt
+src/nanoagent_lsh_ast_canonicalizer.egg-info/top_level.txt
+src/plugin/__init__.py
+src/plugin/__main__.py
+src/plugin/canonicalize.py
+src/plugin/reference.py
+tests/test_canonicalize.py
+tests/test_verifier.py

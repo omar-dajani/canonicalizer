@@ -1,0 +1,33 @@
+_ > nanoagent.plugin.v0001.ManifestConfig:
+id: lsh-ast-canonicalizer
+name: AST Identifier Canonicalizer
+version: 0.1.0
+status: ready
+spec: nanoagent.plugin/v0001
+
+runtime > nanoagent.plugin.v0001.RuntimeConfig:
+  type: mcp_stdio
+  command: [uv, run, --frozen, python, -m, plugin]
+
+permissions > nanoagent.plugin.v0001.PermissionsConfig:
+  network > nanoagent.plugin.v0001.NetworkConfig:
+    hosts: []
+  filesystem > nanoagent.plugin.v0001.FilesystemConfig:
+    write: [workspace]
+
+tools > dict[contract.Tool, nanoagent.plugin.v0001.ToolConfig]:
+  canonicalize_code:
+    description: Rename every user-defined variable and function in a Python snippet to var_<n> and func_<n>, keeping its syntax tree unchanged
+  reference_canonicalize:
+    description: Reference answer for canonicalize-snippet, computed by a second implementation; the agent must not call it
+
+tasks > dict[contract.Task, nanoagent.plugin.v0001.TaskConfig]:
+  canonicalize-snippet:
+    description: Canonicalize a Python snippet's identifiers
+    runner: agent
+    tools: [canonicalize_code]
+    reference: reference_canonicalize
+    instructions: |-
+      The request is a Python snippet. Call canonicalize_code once with that snippet exactly as given, then submit its output unchanged.
+      Every variable and parameter becomes var_<n> and every function becomes func_<n>, numbered from 0 in order of first appearance. Classes, imports, attributes and dunder names keep their names, and the syntax tree must not change.
+      If canonicalize_code reports that the snippet is not valid Python, end without submitting.
